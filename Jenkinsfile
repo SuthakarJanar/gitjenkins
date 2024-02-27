@@ -14,7 +14,7 @@ pipeline {
         stage('Clone repo') {
             steps {
                 
-                git branch: 'devops', url: 'https://github.com/SHODELACAILLE/Jenkins_Test.git'
+                git branch: 'devops', url: 'https://github.com/SuthakarJanar/gitjenkins.git'
             }
         }
 
