@@ -3,7 +3,7 @@ node {
     def mvnHome = tool 'maven-3.5.2'
 
     stage('Clone repo'){
-        git branch: 'devops', url: 'https://github.com/SHODELACAILLE/Jenkins_Test.git'
+        git branch: 'devops', url: 'https://github.com/SuthakarJanar/gitjenkins.git'
     }
 
     stage('Build project'){
