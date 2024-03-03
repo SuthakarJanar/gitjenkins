@@ -1,25 +1,33 @@
-version: '3'
+pipeline {
+    agent any 
 
-services:
-  sonarqube:
-    image: sonarqube:latest
-    ports:
-      - "9000:9000"
-      - "9092:9092"
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarqube-db:5432/sonar
-      - SONARQUBE_JDBC_USERNAME=sonar
-      - SONARQUBE_JDBC_PASSWORD=sonar
-    networks:
-      - sonarnet
+    tools {
+        maven 'maven-3.5.2' 
+    }
 
-  sonarqube-db:
-    image: postgres:latest
-    environment:
-      - POSTGRES_USER=sonar
-      - POSTGRES_PASSWORD=sonar
-    networks:
-      - sonarnet
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm 
+            }
+        }
 
-networks:
-  sonarnet:
+        stage('Build and Analyze') {
+            steps {
+        
+                dir('demo') {
+                    sh 'chmod +x mvnw'
+   
+
+ 
+                    withSonarQubeEnv('tondaron93') {
+                   
+                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=url -Dsonar.token='
+                    }
+                }
+            }
+        }
+    }
+
+ 
+}
