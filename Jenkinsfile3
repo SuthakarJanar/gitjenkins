@@ -20,9 +20,9 @@ pipeline {
    
 
  
-                    withSonarQubeEnv('tondaron93') {
+                    withSonarQubeEnv('sonarjanar') {
                    
-                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=url -Dsonar.token='
+                        sh './mvnw sonar:sonar -Dsonar.projectKey=com.example:demo -Dsonar.host.url=https://0b7d-82-66-42-69.ngrok-free.app -Dsonar.token=sqa_8a42aed05738175231aaaa15b6c13fe362c45f8e'
                     }
                 }
             }
